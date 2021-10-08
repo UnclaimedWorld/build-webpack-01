@@ -1,0 +1,47 @@
+:root {
+  --scrollbar-x: 0;
+  --scrollbar-y: 0;
+}
+.flex {
+  display: flex;
+  &-j-e {
+    justify-content: flex-end;
+  }
+  &-j-b {
+    justify-content: space-between;
+  }
+  &-j-c {
+    justify-content: center;
+  }
+  &-a-s {
+    align-items: flex-start;
+  }
+  &-a-c {
+    align-items: center;
+  }
+  &-no-wrap {
+    flex-wrap: nowrap;
+  }
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-column {
+    flex-direction: column;
+  }
+  &-grow {
+    flex-grow: 1;
+  }
+  &-no-shrink {
+    flex-shrink: 0;
+  }
+}
+@each $offset in 2 {
+  .mb-#{$offset} {
+    margin-bottom: #{$offset}px;
+  }
+}
+@each $offset in 8 {
+  .ml-#{$offset} {
+    margin-left: #{$offset}px;
+  }
+}

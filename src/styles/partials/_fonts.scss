@@ -1,0 +1,28 @@
+// Example
+$fonts: (
+  Gilroy: (
+    format: "woff",
+    list: (
+      // Thin: 100,
+      // ExtraLight: 200,
+      //Light: 300,
+      Regular: 400,
+      Medium: 500,
+      SemiBold: 600,
+      Bold: 700
+      // Black: 800,
+      //Super: 900
+    )
+  )
+);
+
+@each $font, $font-list in $fonts {
+  @each $name, $weight in map-get($font-list, 'list') {
+    @font-face {
+      font-family: $font;
+      font-weight: $weight;
+      src: url("../fonts/#{$font}/#{$font}-#{$name}.#{map-get($font-list, format)}");
+      font-display: swap;
+    }
+  }
+}

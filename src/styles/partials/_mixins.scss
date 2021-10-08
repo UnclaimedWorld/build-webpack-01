@@ -1,0 +1,71 @@
+@mixin font-face($map) {
+  @font-face {
+    font-family: map-get($map, "family");
+    font-weight: map-get($map, "weight");
+    src: url(map-get($map, "path"));
+  }
+}
+@function rem($pixels, $context: $font-size) {
+  @if(unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if(unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+@function em($pixels, $context: $font-size) {
+  @if(unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if(unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+@function vh($pixels, $context: $viewport-height) {
+  @if(unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if(unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 100vh;
+}
+@function size($pixels, $context: $container) {
+  @if(unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if(unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 100%;
+}
+
+@mixin text($font, $line, $context: $font-size) {
+  font-size: $font / $context * 1rem;
+  line-height: $line / $font * 1em;
+}
+
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+@mixin placeholder {
+  ::-webkit-input-placeholder   {@content}
+  ::-moz-placeholder            {@content}
+  :-ms-input-placeholder        {@content}
+  :-moz-placeholder             {@content}
+  &::placeholder                {@content}
+}
